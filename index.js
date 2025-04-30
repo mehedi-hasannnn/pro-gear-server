@@ -87,6 +87,13 @@ const client = new MongoClient(uri, {
         res.send(result)
       })
   
+      // users related apis
+      app.get('/users', async(req,res)=>{
+        const cursor = userCollection.find();
+        const result = await cursor.toArray();
+        res.send(result);
+      })
+  
   
   
       // Send a ping to confirm a successful connection
