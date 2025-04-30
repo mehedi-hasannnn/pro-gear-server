@@ -50,7 +50,15 @@ const client = new MongoClient(uri, {
         res.send(result)
       })
   
-  
+      app.post('/equipment', async(req,res)=>{
+        const newEquipment = req.body;
+        console.log(newEquipment)
+        const result = await equipmentCollection.insertOne(newEquipment);
+        res.send(result);
+       
+    })
+
+
   
       // Send a ping to confirm a successful connection
       // await client.db("admin").command({ ping: 1 });
