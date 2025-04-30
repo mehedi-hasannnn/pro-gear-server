@@ -36,7 +36,14 @@ const client = new MongoClient(uri, {
           res.send(result);
       })
   
-  
+      app.get('/equipment-home', async(req,res)=>{
+        const sortOrder = parseInt(req.query.sortOrder) || 1;
+        const cursor = equipmentCollection.find().limit(6).sort({ price: sortOrder });
+        const result = await cursor.toArray();
+        res.send(result);
+    })
+
+
   
   
       // Send a ping to confirm a successful connection
