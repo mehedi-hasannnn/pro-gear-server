@@ -24,7 +24,7 @@ const client = new MongoClient(uri, {
   async function run() {
     try {
       // Connect the client to the servers (optional starting in v4.7)
-      await client.connect();
+    //   await client.connect();
   
       const equipmentCollection = client.db('sportDB').collection('equipment');
       const userCollection = client.db('sportDB').collection('users');
@@ -103,7 +103,7 @@ const client = new MongoClient(uri, {
   
       // Send a ping to confirm a successful connection
       // await client.db("admin").command({ ping: 1 });
-      console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    //   console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
       // Ensures that the client will close when you finish/error
       // await client.close();
@@ -113,7 +113,7 @@ const client = new MongoClient(uri, {
   
   
   app.get('/',(req,res)=>{
-      res.send('SportsAxis is running')
+      res.send('Pro gear is running')
   })
   
   app.listen(port, () => {
