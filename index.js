@@ -80,6 +80,13 @@ const client = new MongoClient(uri, {
         res.send(result);
       })
   
+      app.delete('/equipment/:id',async(req,res)=>{
+        const id = req.params.id;
+        const query = {_id: new ObjectId(id)};
+        const result = await equipmentCollection.deleteOne(query)
+        res.send(result)
+      })
+  
   
   
       // Send a ping to confirm a successful connection
