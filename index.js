@@ -43,7 +43,13 @@ const client = new MongoClient(uri, {
         res.send(result);
     })
 
-
+    app.get('/equipment/:id',async(req,res)=>{
+        const id = req.params.id
+        console.log(id)
+        const result = await equipmentCollection.findOne({ _id: new ObjectId(id) });
+        res.send(result)
+      })
+  
   
   
       // Send a ping to confirm a successful connection
