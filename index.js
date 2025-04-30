@@ -58,7 +58,29 @@ const client = new MongoClient(uri, {
        
     })
 
-
+    app.put('/equipment/:id', async(req,res)=>{
+        const id = req.params.id;
+        const filter = {_id: new ObjectId(id)}
+        const options = {upsert: true};
+        const updatedEquipment= req.body;
+        const equipment = {
+          $set: {
+            name: updatedEquipment.name,
+            category: updatedEquipment.category,
+            description: updatedEquipment.description,
+            customization: updatedEquipment.customization,
+            time: updatedEquipment.time,
+            status: updatedEquipment.status,
+            price: updatedEquipment.price,
+            rating: updatedEquipment.rating,
+            photo: updatedEquipment.photo,
+          }
+        }
+        const result = await equipmentCollection.updateOne(filter, equipment, options);
+        res.send(result);
+      })
+  
+  
   
       // Send a ping to confirm a successful connection
       // await client.db("admin").command({ ping: 1 });
